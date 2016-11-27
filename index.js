@@ -4,14 +4,14 @@ var app = express()
 var bot = require('./bot')
 var config = require('./config')
 
-app.post('/api/messages', bot.connector.listen())
+app.post(config.botEndpoint, bot.connector.listen())
 
 app.get('/', (req, res) => {
   res.send(`
     <!DOCTYPE html>
       <html>
         <body>
-          <iframe style="height:400px;" src='https://webchat.botframework.com/embed/${config.botHandle}?s=${config.web_chat.key1}'></iframe>
+          <iframe style="height:450px;" src='https://webchat.botframework.com/embed/${config.botHandle}?s=${config.web_chat.key1}'></iframe>
         </body>
       </html>
   `)
