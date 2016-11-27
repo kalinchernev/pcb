@@ -4,6 +4,10 @@ var app = express()
 var bot = require('./bot')
 var config = require('./config')
 
+// Attach middleware to make files public
+app.use(express.static('public'))
+
+// Bind the bot endpoint to the app
 app.post(config.botEndpoint, bot.connector.listen())
 
 app.get('/', (req, res) => {

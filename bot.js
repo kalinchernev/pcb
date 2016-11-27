@@ -37,6 +37,7 @@ intents.onDefault([
     }
   },
   (session, results) => {
+    session.sendTyping();
     session.send(`Hello ${session.userData.name}!`);
   }
 ]);
