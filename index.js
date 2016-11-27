@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
       <!DOCTYPE html>
         <html>
           <body>
-            <iframe style="height:400px;" src='https://webchat.botframework.com/embed/tisha?s=${config.web_chat.key1}'></iframe>
+            <iframe style="height:400px;" src='https://webchat.botframework.com/embed/${config.botHandle}?s=${config.web_chat.key1}'></iframe>
           </body>
         </html>
   `)
