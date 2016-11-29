@@ -1,28 +1,31 @@
-var config = require('./config');
-var _key = config.cognitiveServices.emotionApi.key1;
-var _url = 'https://api.projectoxford.ai/emotion/v1.0/recognize';
-var _exampleImageUrl = 'https://pcb-kalinchernev.c9users.io/example.jpg';
-
 var request = require('request');
+var config = require('./config');
 
+// Private things
+var key = config.cognitiveServices.emotionApi.key1;
+var api = 'https://api.projectoxford.ai/emotion/v1.0/recognize';
+
+// Prepare the special headers
 var headers = {
-  'Ocp-Apim-Subscription-Key': _key,
+  'Ocp-Apim-Subscription-Key': key,
   'Content-type': 'application/json'
 };
 
-var dataString = `{ "url": "${_exampleImageUrl}" }`;
+// Public method returning data in a promise
+module.exports = function getEmotion(options) {
+  return new Promise((resolve, reject) => {
+    var bodyData = JSON.stringify(options.body);
 
-var options = {
-  url: 'https://api.projectoxford.ai/emotion/v1.0/recognize',
-  method: 'POST',
-  headers: headers,
-  body: dataString
-};
-
-function callback(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    console.log(body);
-  }
+    request({
+      url: api,
+      headers: headers,
+      method: 'POST',
+      body: bodyData
+    }, (error, response, body) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(body);
+    })
+  })
 }
-
-request(options, callback);
