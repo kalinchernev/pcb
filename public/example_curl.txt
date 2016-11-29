@@ -1,0 +1,1 @@
+curl -XPOST -H 'Ocp-Apim-Subscription-Key: KEY' -H "Content-type: application/json" -d '{ "url": "http://images.huffingtonpost.com/2016-03-25-1458942771-1871497-13ThingsThatWillMakeYouMuchHappierHP.jpg" }' 'https://api.projectoxford.ai/emotion/v1.0/recognize'

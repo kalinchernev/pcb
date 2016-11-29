@@ -1,29 +1,28 @@
-var req = require('request');
 var config = require('./config');
-
 var _key = config.cognitiveServices.emotionApi.key1;
 var _url = 'https://api.projectoxford.ai/emotion/v1.0/recognize';
+var _exampleImageUrl = 'https://pcb-kalinchernev.c9users.io/example.jpg';
 
-var _exampleImageUrl = '';
+var request = require('request');
 
-function emotionReply(err, response, body) {
-  console.log(response);
-  if (!err && response.statusCode == 200) {
-    var imageInfo = JSON.parse(body);
-    console.log(imageInfo);
-  }
-}
+var headers = {
+  'Ocp-Apim-Subscription-Key': _key,
+  'Content-type': 'application/json'
+};
+
+var dataString = `{ "url": "${_exampleImageUrl}" }`;
 
 var options = {
-  url: _url,
-  headers: {
-    'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': _key,
-    'host': 'api.projectoxford.ai'
-  },
-  data: {
-    "url": _exampleImageUrl
+  url: 'https://api.projectoxford.ai/emotion/v1.0/recognize',
+  method: 'POST',
+  headers: headers,
+  body: dataString
+};
+
+function callback(error, response, body) {
+  if (!error && response.statusCode == 200) {
+    console.log(body);
   }
 }
 
-req.post(options, emotionReply);
+request(options, callback);

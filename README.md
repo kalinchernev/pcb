@@ -15,6 +15,8 @@
 - [List of services](https://www.microsoft.com/cognitive-services)
 - [Bot intelligence](https://docs.botframework.com/en-us/bot-intelligence/getting-started/#navtitle)
 - [Node.js bot builder](https://docs.botframework.com/en-us/node/builder/overview/)
+- [CURL builder](https://curlbuilder.com/)
+- [CURL to code](http://curl.trillworks.com/#node)
 
 ## Misc
 
