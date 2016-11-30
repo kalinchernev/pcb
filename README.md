@@ -9,6 +9,28 @@
 4. Add the following "Messaging endpoint" in the bot settings page https://dev.botframework.com/bots?id=YOUR_BOT_ID as https://YOUR_PUBLIC_IP_ADDRESS/api/messages
 5. Check out the "Useful links" section for further details
 
+## Emotion wrapper
+
+`emotion.js` abstracts service calls to the Emotions API, works with promises
+in order to be `then()`-able. Example implementation included:
+
+```
+var getEmotion = require('../emotion')
+
+var imageUrl = 'https://pcb-kalinchernev.c9users.io/example.jpg'
+
+var options = {
+  body: {
+    url: imageUrl
+  }
+}
+
+// Get a then-able reply from the expert
+getEmotion(options).then((data) => {
+  console.log(data)
+});
+```
+
 ## Useful links
 
 - [List of bots](https://dev.botframework.com/bots)
