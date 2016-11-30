@@ -1,4 +1,5 @@
-var config = require('./config')
+var config = require('./config');
+var getEmotion = require('./emotion');
 var builder = require('botbuilder');
 
 // Create chat bot
@@ -23,6 +24,35 @@ intents.matches(/^change name/i, [
   },
   (session, results) => {
     session.send(`Ok... Now I will call you ${session.userData.name}`);
+  }
+]);
+
+intents.matches(/^my emotion/i, [
+  (session) => {
+    builder.Prompts.attachment(session, "Upload a picture first ;)");
+  },
+  (session, results) => {
+    var imageUrl = results.response[0]['contentUrl'];
+
+    var options = {
+      body: {
+        url: imageUrl
+      }
+    }
+
+    // Get a then-able reply from the expert
+    getEmotion(options).then((data) => {
+      var userEmotion = 0;
+      session.sendTyping();
+
+      if (userEmotion == 0) {
+        session.send(`You are Sylvester Stallone!`);
+      }
+      else {
+        session.send(`There is still hope!`);
+      }
+      session.endDialog(`Let's be honest! ${data}`);
+    });
   }
 ]);
 

@@ -43,3 +43,10 @@ getEmotion(options).then((data) => {
 ## Misc
 
 - `runners` directory contains a custom runner with nodemon: faster development
+
+
+## FUN
+
+Example usage of the emotion module: (pretty rough implementation)
+
+![alt text](./public/fun.png "Getting emotion in chat example")
