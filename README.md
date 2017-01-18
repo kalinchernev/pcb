@@ -1,5 +1,7 @@
 # PCB
 
+You can [read the story behind this project](https://chatbotslife.com/building-a-chat-bot-who-understands-emotions-though-your-selfies-e9fa7cc4b627#.65g192kug), if you prefer more narrative form of information :)
+
 ## Setup
 
 0. You need to install [`node.js`](https://nodejs.org/en/download/)
@@ -26,9 +28,7 @@ var options = {
 }
 
 // Get a then-able reply from the expert
-getEmotion(options).then((data) => {
-  console.log(data)
-});
+getEmotion(options).then(data => console.log(data));
 ```
 
 ## Useful links
