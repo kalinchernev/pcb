@@ -20,8 +20,7 @@
   "homepage": "https://github.com/kalinchernev/pcb#readme",
   "dependencies": {
     "botbuilder": "^3.8.1",
-    "express": "^4.14.1",   
-    "express": "^4.14.0",
+    "express": "^4.14.1",
     "node-oxford-emotion": "^1.0.4",
     "nodemon": "^1.11.0"
   },
